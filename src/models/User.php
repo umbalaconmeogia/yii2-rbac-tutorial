@@ -13,6 +13,7 @@ use Yii;
  * @property string $password_hash
  * @property string|null $password_reset_token
  * @property string $email
+ * @property int|null $privilege
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -31,6 +32,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email'], 'required'],
+            [['privilege'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['email'], 'unique'],
@@ -51,6 +53,7 @@ class User extends \yii\db\ActiveRecord
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
+            'privilege' => 'Privilege',
         ];
     }
 }

@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'password_hash',
             'password_reset_token',
             //'email:email',
+            //'privilege',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
