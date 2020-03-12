@@ -1,8 +1,5 @@
 <?php
-
 namespace app\models;
-
-use Yii;
 
 /**
  * This is the model class for table "post".
@@ -11,7 +8,7 @@ use Yii;
  * @property string $title
  * @property string|null $content
  */
-class Post extends \yii\db\ActiveRecord
+class Post extends BaseAppModel
 {
     /**
      * {@inheritdoc}

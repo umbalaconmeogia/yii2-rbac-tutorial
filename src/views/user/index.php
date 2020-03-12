@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -26,13 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
-            //'email:email',
-            //'privilege',
+            'email:email',
+            [
+                'attribute' => 'privilege',
+                'filter' => User::privilegeOptionArr(),
+                'value' => 'privilegeStr',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
