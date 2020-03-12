@@ -18,7 +18,11 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $email
  * @property int $privilege
- *
+ * @property string $created_by
+ * @property string $created_at
+ * @property string $updated_by
+ * @property string $updated_at
+ * 
  * @property string $password write-only password
  *
  * @property string $privilegeStr
@@ -49,7 +53,7 @@ class User extends BaseAppModel implements IdentityInterface
         return [
             [['username', 'auth_key', 'password_hash', 'email'], 'required'],
             [['privilege'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['username', 'password', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
@@ -70,11 +74,19 @@ class User extends BaseAppModel implements IdentityInterface
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'privilege' => 'Privilege',
+            'created_by' => 'Created By',
+            'created_at' => 'Created At',
+            'updated_by' => 'Updated By',
+            'updated_at' => 'Updated At',
 
             'privilegeStr' => 'Privilege',
         ];
     }
 
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['created_by' => 'id']);
+    }
     /**
      * {@inheritdoc}
      */

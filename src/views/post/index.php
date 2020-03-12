@@ -28,6 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'title:ntext',
             'content:ntext',
+            [
+                'header' => 'Author',
+                'value' => 'author.username',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

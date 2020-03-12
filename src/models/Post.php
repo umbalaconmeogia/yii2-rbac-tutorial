@@ -7,6 +7,10 @@ namespace app\models;
  * @property int $id
  * @property string $title
  * @property string|null $content
+ * @property string $created_by
+ * @property string $created_at
+ * @property string $updated_by
+ * @property string $updated_at
  */
 class Post extends BaseAppModel
 {
@@ -38,6 +42,15 @@ class Post extends BaseAppModel
             'id' => 'ID',
             'title' => 'Title',
             'content' => 'Content',
+            'created_by' => 'Created By',
+            'created_at' => 'Created At',
+            'updated_by' => 'Updated By',
+            'updated_at' => 'Updated At',
         ];
+    }
+
+    public function getAuthor()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 }
