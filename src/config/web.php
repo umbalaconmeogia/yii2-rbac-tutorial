@@ -50,6 +50,10 @@ $config = [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+            'defaultRoles' => ['author', 'admin'],
+        ],
         'db' => $db,
         /*
         'urlManager' => [

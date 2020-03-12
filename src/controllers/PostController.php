@@ -5,9 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Post;
 use app\models\PostSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -20,10 +20,29 @@ class PostController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'view'],
+                        'roles' => ['@'],
+                    ],
+                    [
+                        // In fact, we don't need to define this rule here, but can defined it in roles = @ above.
+                        // I put it here just for an example.
+                        'allow' => 'true',
+                        'actions' => ['create'],
+                        'roles' => ['createPost'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update', 'delete'],
+                        'roles' => ['updatePost'],
+                        'roleParams' => function() {
+                            return ['post' => Post::findOne(['id' => Yii::$app->request->get('id')])];
+                        },                    
+                    ],
                 ],
             ],
         ];

@@ -1,0 +1,108 @@
+﻿# A5:ER FORMAT:13
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",7,"A4Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=7
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Entity]
+PName=user
+LName=user
+Comment=
+TableOption=
+Page=Main
+Left=100
+Top=100
+Field="id","id","INTEGER","NOT NULL",0,"","",$FFFFFFFF,""
+Field="username","username","VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="auth_key","auth_key","VARCHAR(32)","NOT NULL",,"","",$FFFFFFFF,""
+Field="password_hash","password_hash","VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="password_reset_token","password_reset_token","VARCHAR(255)",,,"","",$FFFFFFFF,""
+Field="email","email","VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="privilege","privilege","INTEGER",,,"","",$FFFFFFFF,""
+Field="created_by","created_by","INTEGER",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","INTEGER",,,"","",$FFFFFFFF,""
+Field="updated_by","updated_by","INTEGER",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","INTEGER",,,"","",$FFFFFFFF,""
+Index=sqlite_autoindex_user_3=1,email
+Index=sqlite_autoindex_user_2=1,password_reset_token
+Index=sqlite_autoindex_user_1=1,username
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",100,100
+ZOrder=0
+
+[Entity]
+PName=post
+LName=post
+Comment=
+TableOption=
+Page=Main
+Left=900
+Top=100
+Field="id","id","INTEGER","NOT NULL",0,"","",$FFFFFFFF,""
+Field="title","title","TEXT","NOT NULL",,"","",$FFFFFFFF,""
+Field="content","content","TEXT",,,"","",$FFFFFFFF,""
+Field="created_by","created_by","INTEGER",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","INTEGER",,,"","",$FFFFFFFF,""
+Field="updated_by","updated_by","INTEGER",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","INTEGER",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20200313045254
+Position="Main",900,100
+ZOrder=1
+
+[Relation]
+Entity1=user
+Entity2=post
+RelationType1=2
+RelationType2=3
+Fields1=id
+Fields2=created_by
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1081,8919,1372,R,R
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20200313045245
+LineMode=0
+Bar1=108
+Bar2=892
+Bar3=137
+TermPos1=R
+TermPos2=R
+ZOrder=2
