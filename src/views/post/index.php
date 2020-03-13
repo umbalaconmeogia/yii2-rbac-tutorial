@@ -3,6 +3,7 @@
 use app\models\Post;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\StringHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PostSearch */
@@ -28,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'title:ntext',
-            'content:ntext',
+            [
+                'attribute' => 'content',
+                'value' => function(Post $model) {
+                    return StringHelper::truncate($model->content, 45, '…');
+                },
+            ],
             [
                 'header' => 'Author',
                 'value' => 'author.username',
