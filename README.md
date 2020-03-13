@@ -12,11 +12,12 @@ The presentation document is [Yii2RbacTutorial.pdf](./docs/tutorial/Yii2RbacTuto
 
 * Goto `src` directory and run
   ```shell
+  # Install depencencies.
   composer install
-  
+
+  # Create database
   ./yii migrate
-  
+
+  # Create sample data for user and post
   ./yii initial-data
-  
-  ./yii rbac/init
   ```

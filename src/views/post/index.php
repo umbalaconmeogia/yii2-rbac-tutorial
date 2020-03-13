@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Post;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -33,7 +34,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'author.username',
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'visibleButtons' => [
+                    'update' => function ($model, $key, $index) {
+                        return Yii::$app->user->can('updatePost', ['post' => $model]);
+                    },
+                    'delete' => function ($model, $key, $index) {
+                        return Yii::$app->user->can('updatePost', ['post' => $model]);
+                    },
+                ],
+            ],
         ],
     ]); ?>
 

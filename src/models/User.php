@@ -25,6 +25,7 @@ use yii\web\IdentityInterface;
  * 
  * @property string $password write-only password
  *
+ * @property Post[] $posts
  * @property string $privilegeStr
  */
 class User extends BaseAppModel implements IdentityInterface
@@ -245,5 +246,20 @@ class User extends BaseAppModel implements IdentityInterface
     public function getPrivilegeStr()
     {
         return ArrayHelper::getValue(self::privilegeOptionArr(), $this->privilege, 'Normal');
+    }
+
+    /**
+     * Delete relative Post before delete User itself.
+     * {@inheritDoc}
+     * @see \yii\db\ActiveRecord::delete()
+     */
+    public function delete()
+    {
+        if ($this->posts) {
+            foreach ($this->posts as $post) {
+                $post->delete();
+            }
+        }
+        return parent::delete();
     }
 }

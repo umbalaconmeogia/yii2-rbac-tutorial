@@ -25,6 +25,7 @@ class UserController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        // Any setting below (roles => admin or roles => manageUser) are OK.
                         // 'roles' => ['admin'],
                         'roles' => ['manageUser'],
                     ],
